@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import BlueButton from "../components/blue-button";
 
 export default function page() {
   return (
@@ -14,6 +15,7 @@ export default function page() {
             </div>
             <label className="text-xl">Enter A Novel</label>
             <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline my-4"></input>
+            <BlueButton text="Submit" />
           </form>
         </div>
         <Image src="/form.png" alt="Form art" width={400} height={400} />

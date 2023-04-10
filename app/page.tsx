@@ -1,5 +1,7 @@
 import Image from "next/image";
 import GreenButton from "./components/green-button";
+import { FaLightbulb, FaBookOpen } from "react-icons/fa";
+import { BsFillPersonFill } from "react-icons/bs";
 
 export default function Home() {
   return (
@@ -18,6 +20,43 @@ export default function Home() {
         </div>
         <div className="place-self-end w-auto h-auto">
           <Image src="/hero.png" width={400} height={400} alt="hero image" />
+        </div>
+      </section>
+      <section className="text-center">
+        <h3 className="text-4xl">
+          Connect with your favorite authors like never before
+        </h3>
+        <div className="grid grid-cols-3 gap-20 place-items-center py-20">
+          <div className="grid grid-cols-1 place-items-center">
+            <div className="p-10 text-7xl text-blue">
+              <FaBookOpen />
+            </div>
+            <p className="text-4xl">Experience</p>
+            <p>
+              Booksmart offers a unique platform for book lovers to come
+              together and share their ideas with other passionate readers.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 place-items-center">
+            <div className="p-10 text-7xl text-blue">
+              <FaLightbulb />
+            </div>
+            <p className="text-4xl">Connect</p>
+            <p>
+              A unique opportunity for book lovers to directly engage in
+              conversation with their favorite authors.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 place-items-center">
+            <div className="p-10 text-7xl text-blue">
+              <BsFillPersonFill />
+            </div>
+            <p className="text-4xl">Interact</p>
+            <p>
+              Ask questions, share feedback, and get a glimpse of the person
+              behind your favorite books.
+            </p>
+          </div>
         </div>
       </section>
     </main>
