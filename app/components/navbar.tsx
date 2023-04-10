@@ -4,13 +4,15 @@ import Link from "next/link";
 export default function Navbar() {
   return (
     <ul className="text-4xl flex justify-between relative h-20">
-      <li>booksmart</li>
+      <Link href="/">
+        <li>booksmart</li>
+      </Link>
       <div className="flex space-x-8">
         <Link href="/">
-          <li className="hover:border-b-green hover:border-b-8">About</li>
+          <li className="hover:border-b-green hover:border-b-8 pb-2">About</li>
         </Link>
         <Link href="/">
-          <li className="hover:border-b-green hover:border-b-8">Log In</li>
+          <li className="hover:border-b-green hover:border-b-8 pb-2">Log In</li>
         </Link>
       </div>
     </ul>

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Button from "./components/button";
+import GreenButton from "./components/green-button";
 
 export default function Home() {
   return (
@@ -13,10 +13,10 @@ export default function Home() {
             and immersive literary experience.
           </p>
           <div className="py-10">
-            <Button text="Check It Out!" link="/dashboard" />
+            <GreenButton text="Check It Out!" link="/dashboard" />
           </div>
         </div>
-        <div className="place-self-end">
+        <div className="place-self-end w-auto h-auto">
           <Image src="/hero.png" width={400} height={400} alt="hero image" />
         </div>
       </section>
