@@ -13,7 +13,7 @@ export default function Home() {
             and immersive literary experience.
           </p>
           <div className="py-10">
-            <Button text="Check It Out!" link="/" />
+            <Button text="Check It Out!" link="/dashboard" />
           </div>
         </div>
         <div className="place-self-end">
