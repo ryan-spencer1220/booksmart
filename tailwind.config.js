@@ -10,6 +10,13 @@ module.exports = {
       blue: "#3E8BFF",
       green: "#3FFFB2",
       aqua: "#3EECFF",
+      gray: "#5A5D7A",
+      lightGray: "#DFDEE2",
+      red: "#F96256",
+      yellow: "#FDBC3C",
+      green: "#32C948",
+      white: "#F7F7F7",
+      gold: "#E6D184",
     },
     extend: {
       fontFamily: {
