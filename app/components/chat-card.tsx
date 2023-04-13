@@ -3,7 +3,7 @@ import { Typewriter } from "react-simple-typewriter";
 
 export default function ChatCard() {
   return (
-    <section className="max-w-full shadow-2xl rounded-3xl bg-gray h-screen">
+    <section className="container w-screen shadow-2xl rounded-3xl bg-gray h-screen">
       <div className="h-10 w-full bg-lightGray rounded-t-3xl flex items-center space-x-1 ps-2">
         <div className="rounded-full bg-red w-5 h-5"></div>
         <div className="rounded-full bg-yellow w-5 h-5"></div>

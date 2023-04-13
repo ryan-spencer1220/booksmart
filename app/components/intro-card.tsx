@@ -1,8 +1,11 @@
-"use client";
 import Form from "../components/form";
 import Image from "next/image";
 
-export default function IntroCard({ setIntroCard }) {
+export default function IntroCard({
+  setIntroCard,
+}: {
+  setIntroCard: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <section className="max-w-full shadow-2xl rounded-3xl p-20 grid grid-cols-2 gap-24">
       <Image

@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import IntroCard from "../components/intro-card";
 import ChatCard from "../components/chat-card";
