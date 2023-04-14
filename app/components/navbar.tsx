@@ -9,10 +9,14 @@ export default function Navbar() {
       </Link>
       <div className="flex space-x-8">
         <Link href="/">
-          <li className="hover:border-b-green hover:border-b-8 pb-2">About</li>
+          <li className="hover:border-b-lightGreen hover:border-b-8 pb-2">
+            About
+          </li>
         </Link>
         <Link href="/">
-          <li className="hover:border-b-green hover:border-b-8 pb-2">Log In</li>
+          <li className="hover:border-b-lightGreen hover:border-b-8 pb-2">
+            Log In
+          </li>
         </Link>
       </div>
     </ul>

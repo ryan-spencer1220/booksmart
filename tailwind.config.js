@@ -17,6 +17,7 @@ module.exports = {
       green: "#32C948",
       white: "#F7F7F7",
       gold: "#E6D184",
+      purple: "#A1A9EB",
     },
     extend: {
       fontFamily: {

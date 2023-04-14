@@ -3,8 +3,12 @@ import Image from "next/image";
 
 export default function IntroCard({
   setIntroCard,
+  setAuthor,
+  setTitle,
 }: {
   setIntroCard: React.Dispatch<React.SetStateAction<boolean>>;
+  setAuthor: React.Dispatch<React.SetStateAction<string>>;
+  setTitle: React.Dispatch<React.SetStateAction<string>>;
 }) {
   return (
     <section className="max-w-full shadow-2xl rounded-3xl p-20 grid grid-cols-2 gap-24">
@@ -18,7 +22,7 @@ export default function IntroCard({
       <div>
         <h3 className="text-4xl pb-20">Chat With Your Favorite Author!</h3>
         <button onClick={() => setIntroCard(false)}>Click me</button>
-        <Form />
+        <Form setAuthor={setAuthor} setTitle={setTitle} />
       </div>
     </section>
   );
