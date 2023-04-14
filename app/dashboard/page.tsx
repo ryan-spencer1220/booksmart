@@ -6,13 +6,9 @@ import ChatCard from "../components/chat-card";
 export default function page() {
   const [introCard, setIntroCard] = useState(true);
   return (
-    <div className="[perspective-100px]">
-      <div className="relative duration-500">
-        <div className="absolute inset-0">
-          {introCard && <IntroCard setIntroCard={setIntroCard} />}
-        </div>
-        <div className="absolute">{!introCard && <ChatCard />}</div>
-      </div>
-    </div>
+    <>
+      <div>{introCard && <IntroCard setIntroCard={setIntroCard} />}</div>
+      <div>{!introCard && <ChatCard />}</div>
+    </>
   );
 }
