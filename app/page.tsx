@@ -19,7 +19,13 @@ export default function Home() {
           </div>
         </div>
         <div className="place-self-end w-auto h-auto">
-          <Image src="/hero.png" width={400} height={400} alt="hero image" />
+          <Image
+            src="/hero.png"
+            width={400}
+            height={400}
+            alt="hero image"
+            priority
+          />
         </div>
       </section>
       <section className="text-center">
