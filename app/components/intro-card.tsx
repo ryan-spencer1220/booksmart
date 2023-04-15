@@ -1,5 +1,6 @@
 import Form from "../components/form";
 import Image from "next/image";
+import BlueButton from "../components/blue-button";
 
 export default function IntroCard({
   setIntroCard,
@@ -20,9 +21,11 @@ export default function IntroCard({
         priority
       />
       <div>
-        <h3 className="text-4xl pb-20">Chat With Your Favorite Author!</h3>
-        <button onClick={() => setIntroCard(false)}>Click me</button>
+        <h3 className="text-4xl pb-10">Chat With Your Favorite Author!</h3>
         <Form setAuthor={setAuthor} setTitle={setTitle} />
+        {/* <button onClick={() => setIntroCard(false)}> */}
+        <BlueButton text="Submit" />
+        {/* </button> */}
       </div>
     </section>
   );
