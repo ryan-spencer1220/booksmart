@@ -14,11 +14,12 @@ export default function IntroCard({
   return (
     <section className="max-w-full shadow-2xl rounded-3xl p-20 grid grid-cols-2 gap-24">
       <Image
-        src="/dashboard.png"
+        src="/dashboard1.png"
         alt="Form art"
         width={400}
         height={400}
         priority
+        className="rotate-180"
       />
       <div>
         <h3 className="text-4xl pb-10">Chat With Your Favorite Author!</h3>
