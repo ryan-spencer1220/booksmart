@@ -24,9 +24,9 @@ export default function IntroCard({
       <div>
         <h3 className="text-4xl pb-10">Chat With Your Favorite Author!</h3>
         <Form setAuthor={setAuthor} setTitle={setTitle} />
-        {/* <button onClick={() => setIntroCard(false)}> */}
-        <BlueButton text="Submit" />
-        {/* </button> */}
+        <button onClick={() => setIntroCard(false)}>
+          <BlueButton text="Submit" />
+        </button>
       </div>
     </section>
   );
