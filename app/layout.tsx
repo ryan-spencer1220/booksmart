@@ -1,6 +1,5 @@
 import "./globals.css";
 import localFont from "@next/font/local";
-import Navbar from "./components/navbar";
 
 const cera_pro = localFont({
   src: [
@@ -8,10 +7,6 @@ const cera_pro = localFont({
       path: "../public/fonts/Cera Pro Light.ttf",
       weight: "700",
     },
-    // {
-    //   path: "../public/fonts/Cera Pro Medium.ttf",
-    //   weight: "700",
-    // },
   ],
   variable: "--font-cera-pro",
 });
@@ -28,10 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cera_pro.variable} font-sans`}>
-      <body className="container mx-auto px-40 py-14">
-        <Navbar />
-        {children}
-      </body>
+      <body className="container mx-auto px-40 py-14">{children}</body>
     </html>
   );
 }
