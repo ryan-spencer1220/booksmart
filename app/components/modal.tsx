@@ -4,6 +4,7 @@ import React from "react";
 import BlueButton from "./blue-button";
 import GreenButton from "./green-button";
 import Link from "next/link";
+import { FaApple } from "react-icons/fa";
 
 export default function Modal(props: any) {
   const [email, setEmail] = useState<string>("");
@@ -17,7 +18,7 @@ export default function Modal(props: any) {
     >
       <div className="w-[600px] flex flex-col">
         <div className="bg-white p-12 rounded-2xl grid grid-cols-1 justify-center text-center">
-          <p className="text-2xl py-10">Log in to Booksmart</p>
+          <p className="text-4xl py-10">Log in to Booksmart</p>
           <div className="grid grid-cols-1 gap-4">
             <BlueButton text="Continue With Apple" />
             <BlueButton text="Continue With Google" />
@@ -28,8 +29,8 @@ export default function Modal(props: any) {
             <hr className="w-48 h-1 mx-auto my-4 bg-gray-100 border-1"></hr>
           </div>
           <form className="grid grid-cols-1 py-4">
-            <input placeholder="Email" className="my-4 py-4 text-xl" />
-            <input placeholder="Password" className="my-4 py-4 text-xl" />
+            <input placeholder="Email" className="my-4 p-4 text-xl" />
+            <input placeholder="Password" className="my-4 p-4 text-xl" />
             <GreenButton text="Login With Email" link="/" />
           </form>
           <Link href="/" className="py-4 hover:text-blue">
