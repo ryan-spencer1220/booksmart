@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, KeyboardEvent } from "react";
+import React, { useState, KeyboardEvent } from "react";
 import { Typewriter } from "react-simple-typewriter";
 
 interface Props {
@@ -7,12 +7,11 @@ interface Props {
   title: string;
 }
 
-const ChatCard: React.FC<Props> = (
-  { author, title },
-  {
-    setIntroCard,
-  }: { setIntroCard: React.Dispatch<React.SetStateAction<boolean>> }
-) => {
+export default function ChatCard(props: {
+  author: string;
+  title: string;
+  response: object;
+}) {
   const [userInputArray, setUserInputArray] = useState<string[]>([
     "Hello, how are you doing today?",
   ]);
@@ -26,29 +25,27 @@ const ChatCard: React.FC<Props> = (
     }
   };
 
-  const submitAuthorPrompt = (userAuthor: string) => {
-    console.log("HIT FROM THE FRONT");
-    fetch("https://localhost:3006/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userInputArray,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        let newAssistantMessage = {
-          role: "assistant",
-          content: `${data.completion.content}`,
-        };
-      });
-  };
+  console.log();
 
-  useEffect(() => {
-    submitAuthorPrompt("Anthony Bourdain");
-  }, []);
+  // const submitAuthorPrompt = (userAuthor: string) => {
+  //   console.log("HIT FROM THE FRONT");
+  //   fetch("https://localhost:3006/", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       userInputArray,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       let newAssistantMessage = {
+  //         role: "assistant",
+  //         content: `${data.completion.content}`,
+  //       };
+  //     });
+  // };
 
   return (
     <section className="max-w-full shadow-2xl rounded-3xl bg-gray aspect-video overflow-hidden">
@@ -59,12 +56,10 @@ const ChatCard: React.FC<Props> = (
       </div>
       <div className="flex items-end content-between h-full px-10 pt-10 text-xl relative overflow-hidden">
         <div className="px-6 py-10 absolute bottom-24 overflow-hidden">
-          <p className="text-white">{`>${author}`}</p>
+          <p className="text-white">{`>${props.author}`}</p>
           <p className="text-gold">
             <Typewriter
-              words={[
-                `Hello I'm ${author}, author of ${title}, what would you like to ask me?`,
-              ]}
+              words={[props.response.content]}
               cursor={false}
               cursorColor="white"
             />
@@ -86,6 +81,4 @@ const ChatCard: React.FC<Props> = (
       </div>
     </section>
   );
-};
-
-export default ChatCard;
+}

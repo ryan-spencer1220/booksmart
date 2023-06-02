@@ -4,10 +4,19 @@ import IntroCard from "../components/intro-card";
 import ChatCard from "../components/chat-card";
 import { Typewriter } from "react-simple-typewriter";
 
+interface gptResponse {
+  role?: string;
+  content?: string;
+}
+
 export default function Dashboard() {
   const [introCard, setIntroCard] = useState<boolean>(true);
   const [author, setAuthor] = useState<string>("");
   const [title, setTitle] = useState<string>("");
+  const [response, setResponse] = useState<object>({
+    role: "",
+    content: "",
+  });
 
   return (
     <>
@@ -23,13 +32,20 @@ export default function Dashboard() {
       <div>
         {introCard && (
           <IntroCard
+            setResponse={setResponse}
             setIntroCard={setIntroCard}
             setAuthor={setAuthor}
             setTitle={setTitle}
+            author={author}
+            title={title}
           />
         )}
       </div>
-      <div>{!introCard && <ChatCard author={author} title={title} />}</div>
+      <div>
+        {!introCard && response.content && (
+          <ChatCard author={author} title={title} response={response} />
+        )}
+      </div>
     </>
   );
 }
