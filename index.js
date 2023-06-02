@@ -2,6 +2,7 @@ const { Configuration, OpenAIApi } = require("openai");
 bodyParser = require("body-parser");
 cors = require("cors");
 dotenv = require("dotenv");
+require("custom-env").env("staging");
 dotenv.config();
 express = require("express");
 
@@ -17,9 +18,7 @@ const port = 3006;
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", async (req, res) => {
-  const { messages } = req.body;
-
+app.post("/", async (req, res) => {
   console.log(req.body);
 
   const completion = await openai.createChatCompletion({
@@ -28,12 +27,14 @@ app.get("/", async (req, res) => {
       {
         role: "system",
         content:
-          "You are DesignGPT, helpful graphic assistant graphic design chatbot",
+          "You are the famous author, George Orwell, author of 1984. I would like to have a conversation with you. Please keep responses under 200 characters.",
+      },
+      {
+        role: "user",
+        content: "What are the main characters in the book 1984?",
       },
     ],
   });
-
-  console.log("HIT");
 
   res.json({
     completion: completion.data.choices[0].message,
