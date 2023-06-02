@@ -37,7 +37,7 @@ export default function Modal(props: any) {
             Forgot your password?
           </Link>
           <Link href="/" className="py-4 hover:text-blue">
-            You don't have an account?
+            You don&apos;t have an account?
           </Link>
         </div>
       </div>

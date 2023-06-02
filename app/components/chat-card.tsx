@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState, KeyboardEvent } from "react";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -12,7 +13,9 @@ const ChatCard: React.FC<Props> = (
     setIntroCard,
   }: { setIntroCard: React.Dispatch<React.SetStateAction<boolean>> }
 ) => {
-  const [userInputArray, setUserInputArray] = useState<string[]>([]);
+  const [userInputArray, setUserInputArray] = useState<string[]>([
+    "Hello, how are you doing today?",
+  ]);
   const [userInput, setUserInput] = useState<string>("");
 
   const pushInputToArray = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -23,9 +26,29 @@ const ChatCard: React.FC<Props> = (
     }
   };
 
+  const submitAuthorPrompt = (userAuthor: string) => {
+    console.log("HIT FROM THE FRONT");
+    fetch("https://localhost:3006/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userInputArray,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        let newAssistantMessage = {
+          role: "assistant",
+          content: `${data.completion.content}`,
+        };
+      });
+  };
+
   useEffect(() => {
-    console.log(author, title);
-  }, [userInput]);
+    submitAuthorPrompt("Anthony Bourdain");
+  }, []);
 
   return (
     <section className="max-w-full shadow-2xl rounded-3xl bg-gray aspect-video overflow-hidden">

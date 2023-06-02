@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 export default function Form({
@@ -7,12 +8,8 @@ export default function Form({
   setAuthor: React.Dispatch<React.SetStateAction<string>>;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const submitAuthorPrompt = (e: React.FormEvent) => {
-    e.preventDefault();
-  };
-
   return (
-    <form className="text-left" onSubmit={submitAuthorPrompt}>
+    <form className="text-left">
       <div className="py-2">
         <label className="text-xl">Enter Your Favorite Author</label>
         <input
