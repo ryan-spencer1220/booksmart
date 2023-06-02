@@ -1,9 +1,9 @@
-import { Configuration, OpenAIApi } from "openai";
-import bodyParser from "body-parser";
-import cors from "cors";
-import * as dotenv from "dotenv";
+const { Configuration, OpenAIApi } = require("openai");
+bodyParser = require("body-parser");
+cors = require("cors");
+dotenv = require("dotenv");
 dotenv.config();
-import express from "express";
+express = require("express");
 
 const configuration = new Configuration({
   apiKey: process.env.OPEN_API_KEY,
@@ -17,7 +17,7 @@ const port = 3006;
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post("/", async (req, res) => {
+app.get("/", async (req, res) => {
   const { messages } = req.body;
 
   console.log(req.body);
@@ -30,9 +30,10 @@ app.post("/", async (req, res) => {
         content:
           "You are DesignGPT, helpful graphic assistant graphic design chatbot",
       },
-      ...messages,
     ],
   });
+
+  console.log("HIT");
 
   res.json({
     completion: completion.data.choices[0].message,
