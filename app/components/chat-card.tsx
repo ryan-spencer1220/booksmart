@@ -1,51 +1,52 @@
 "use client";
-import React, { useState, KeyboardEvent } from "react";
+import React, { useState, KeyboardEvent, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
-
-interface Props {
-  author: string;
-  title: string;
-}
+import { gptResponse } from "./dashboard";
 
 export default function ChatCard(props: {
   author: string;
   title: string;
-  response: object;
+  response: gptResponse;
 }) {
-  const [userInputArray, setUserInputArray] = useState<string[]>([
-    "Hello, how are you doing today?",
-  ]);
+  const [userInputArray, setUserInputArray] = useState<string[]>([]);
+  const [gptArray, setGptArray] = useState<gptResponse[]>([props.response]);
   const [userInput, setUserInput] = useState<string>("");
+
+  const submitAuthorPrompt = () => {
+    console.log("HIT FROM THE FRONT");
+    fetch("http://localhost:3006/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userInput,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setGptArray([
+          ...gptArray,
+          {
+            role: "user",
+            content: `${data.completion.content}`,
+          },
+        ]);
+      });
+  };
 
   const pushInputToArray = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.code === "Enter") {
       setUserInputArray([...userInputArray, userInput]);
+      setGptArray([...gptArray, { role: "user", content: userInput }]);
       setUserInput("");
-      console.log(userInputArray);
+      // submitAuthorPrompt();
     }
   };
 
-  console.log();
-
-  // const submitAuthorPrompt = (userAuthor: string) => {
-  //   console.log("HIT FROM THE FRONT");
-  //   fetch("https://localhost:3006/", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       userInputArray,
-  //     }),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       let newAssistantMessage = {
-  //         role: "assistant",
-  //         content: `${data.completion.content}`,
-  //       };
-  //     });
-  // };
+  useEffect(() => {
+    console.log(gptArray);
+  }, [gptArray]);
 
   return (
     <section className="max-w-full shadow-2xl rounded-3xl bg-gray aspect-video overflow-hidden">
@@ -64,8 +65,8 @@ export default function ChatCard(props: {
               cursorColor="white"
             />
           </p>
-          {userInputArray.map((text) => (
-            <div className="pt-4" key={text}>
+          {userInputArray.map((text, key) => (
+            <div className="pt-4" key={key}>
               <p className="text-white">{`>You`}</p>
               <p className="text-aqua">{text}</p>
             </div>

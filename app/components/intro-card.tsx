@@ -2,6 +2,7 @@ import Form from "../components/form";
 import Image from "next/image";
 import BlueButton from "../components/blue-button";
 import React, { useState, KeyboardEvent, useEffect } from "react";
+import { gptResponse } from "./dashboard";
 
 export default function IntroCard({
   setResponse,
@@ -11,7 +12,7 @@ export default function IntroCard({
   author,
   title,
 }: {
-  setResponse: React.Dispatch<React.SetStateAction<object>>;
+  setResponse: React.Dispatch<React.SetStateAction<gptResponse>>;
   setIntroCard: React.Dispatch<React.SetStateAction<boolean>>;
   setAuthor: React.Dispatch<React.SetStateAction<string>>;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
@@ -45,6 +46,11 @@ export default function IntroCard({
       });
   };
 
+  const handleClick = () => {
+    setIntroCard(false);
+    submitAuthorPrompt();
+  };
+
   return (
     <section className="max-w-full shadow-2xl rounded-3xl p-20 grid grid-cols-2 gap-24">
       <Image
@@ -58,14 +64,7 @@ export default function IntroCard({
       <div>
         <h3 className="text-4xl pb-10">Chat With Your Favorite Author!</h3>
         <Form setAuthor={setAuthor} setTitle={setTitle} />
-        <button
-          onClick={() => {
-            setIntroCard(false);
-            submitAuthorPrompt();
-          }}
-        >
-          <BlueButton text="Submit" />
-        </button>
+        <BlueButton text="Submit" onClick={handleClick} />
       </div>
     </section>
   );

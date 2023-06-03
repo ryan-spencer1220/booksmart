@@ -22,7 +22,31 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/", async (req, res) => {
-  console.log(req.body);
+  console.log("/");
+  const { author, title } = req.body.userInput;
+  console.log("Author: ", author, "title: ", title);
+
+  const completion = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "system",
+        content: `You are the famous author, ${author}, author of ${title}. Please keep responses under 200 characters.`,
+      },
+      {
+        role: "user",
+        content: `Hello ${author}, please introduce yourself.`,
+      },
+    ],
+  });
+
+  res.json({
+    completion: completion.data.choices[0].message,
+  });
+});
+
+app.post("/conversation", async (req, res) => {
+  console.log("/conversation");
   const { author, title } = req.body.userInput;
   console.log("Author: ", author, "title: ", title);
 

@@ -45,41 +45,81 @@ export default function Home() {
             />
           </div>
         </section>
-        <section className="text-center">
-          <h3 className="text-4xl">
+        <section className="text-center py-4">
+          <h3 className="text-5xl">
             Connect with your favorite authors like never before
           </h3>
-          <div className="grid grid-cols-3 gap-20 place-items-center py-20">
-            <div className="grid grid-cols-1 place-items-center">
-              <div className="p-10 text-7xl text-blue">
-                <FaBookOpen />
+          <div className="grid lg:grid-cols-3 gird-cols-1 gap-20 place-items-center py-20">
+            <div className=" bg-paleBlue rounded-xl">
+              <div className="p-10 grid grid-cols-1 place-items-center">
+                <div className="p-6 text-7xl text-blue">
+                  <FaBookOpen />
+                </div>
+                <p className="text-4xl py-6">Experience</p>
+                <p>
+                  Booksmart offers a unique platform for book lovers to come
+                  together and share their ideas with others.
+                </p>
               </div>
-              <p className="text-4xl">Experience</p>
-              <p>
-                Booksmart offers a unique platform for book lovers to come
-                together and share their ideas with other passionate readers.
-              </p>
             </div>
-            <div className="grid grid-cols-1 place-items-center">
-              <div className="p-10 text-7xl text-blue">
-                <FaLightbulb />
+            <div className="bg-paleBlue rounded-xl">
+              <div className="p-10 grid grid-cols-1 place-items-center">
+                <div className="p-6 text-7xl text-blue">
+                  <FaLightbulb />
+                </div>
+                <p className="text-4xl py-6">Connect</p>
+                <p>
+                  A unique opportunity for book lovers to directly engage in
+                  conversation with their favorite authors.
+                </p>
               </div>
-              <p className="text-4xl">Connect</p>
-              <p>
-                A unique opportunity for book lovers to directly engage in
-                conversation with their favorite authors.
-              </p>
             </div>
-            <div className="grid grid-cols-1 place-items-center">
-              <div className="p-10 text-7xl text-blue">
-                <BsFillPersonFill />
+            <div className=" bg-paleBlue rounded-xl">
+              <div className="p-10 grid grid-cols-1 place-items-center">
+                <div className="p-6 text-7xl text-blue">
+                  <BsFillPersonFill />
+                </div>
+                <p className="text-4xl py-6">Interact</p>
+                <p>
+                  Ask questions, share feedback, and get a glimpse of the person
+                  behind your favorite books.
+                </p>
               </div>
-              <p className="text-4xl">Interact</p>
-              <p>
-                Ask questions, share feedback, and get a glimpse of the person
-                behind your favorite books.
-              </p>
             </div>
+          </div>
+        </section>
+        <section className="grid grid-cols-2 py-24">
+          <div className="text-4xl text-gray">
+            <p className="py-2">Be more knowledgeable</p>
+            <p className="py-2">Be more successful</p>
+            <p className="py-2">Be healthier</p>
+            <p className="py-2">Be a better parent</p>
+            <p className="py-2">Be happier</p>
+            <p className="py-2">Be your best self!</p>
+          </div>
+          <div className="bg-paleGreen text-2xl">
+            <div className="py-12 px-10">
+              95% of Booksmart members read significantly more than before
+            </div>
+            <div className="px-10">
+              91% of Booksmart members create better habits
+            </div>
+            <div className="py-12 px-10">
+              87% have made positive changes in their lives thanks to Booksmart
+            </div>
+          </div>
+        </section>
+        <section className="py-24 text-center">
+          <h3 className="text-5xl pb-28">What our members are saying</h3>
+          <div className="grid grid-cols-2 ">
+            <div></div>
+            <Image
+              src="/reading.svg"
+              height={800}
+              width={800}
+              alt="reader illustration"
+              priority
+            />
           </div>
         </section>
       </main>
