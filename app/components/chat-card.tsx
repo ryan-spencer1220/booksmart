@@ -17,6 +17,7 @@ export default function ChatCard({
 }) {
   const [userInputArray, setUserInputArray] = useState<string[]>([]);
   const [userInput, setUserInput] = useState<string>("");
+  const [newResponse, setNewResponse] = useState<string>("");
 
   const submitAuthorPrompt = () => {
     fetch("http://localhost:3006/conversation", {
@@ -30,7 +31,6 @@ export default function ChatCard({
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("content: ", data.completion.content);
         setGptArray([
           ...gptArray,
           {
@@ -43,17 +43,16 @@ export default function ChatCard({
 
   const pushInputToArray = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.code === "Enter") {
-      setUserInputArray([...userInputArray, userInput]);
-      setGptArray([...gptArray, { role: "user", content: userInput }]);
-      console.log("Second hit: ", gptArray);
-
+      userInputArray.push(userInput);
+      gptArray.push({ role: "user", content: userInput });
       submitAuthorPrompt();
       setUserInput("");
     }
   };
 
   useEffect(() => {
-    console.log("USE EFFECT: ", gptArray);
+    console.log(gptArray);
+    setNewResponse(gptArray[gptArray.length - 1].content);
   }, [gptArray]);
 
   return (
@@ -68,7 +67,7 @@ export default function ChatCard({
           <p className="text-white">{`>${author}`}</p>
           <p className="text-gold">
             <Typewriter
-              words={[response.content]}
+              words={[newResponse]}
               cursor={false}
               cursorColor="white"
             />

@@ -22,22 +22,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/", async (req, res) => {
-  const { author, title } = req.body;
-
+  // const { gptArray } = req.body;
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
-    messages: [
-      {
-        role: "system",
-        content: `You are the famous author, ${author}, author of ${title}. Please keep responses under 200 characters.`,
-      },
-      {
-        role: "user",
-        content: `Hello ${author}, please introduce yourself.`,
-      },
-    ],
+    messages: req.body,
   });
-
   res.json({
     completion: completion.data.choices[0].message,
   });

@@ -17,9 +17,21 @@ export default function Dashboard() {
     role: "",
     content: "",
   });
-  const [gptArray, setGptArray] = useState<Array<gptResponse>>([response]);
+  const [gptArray, setGptArray] = useState<Array<gptResponse>>([]);
 
-  useEffect(() => {}, [response]);
+  useEffect(() => {
+    let initialMessage = [
+      {
+        role: "system",
+        content: `You are the famous author, George Orwell, author of Animal Farm. Please keep responses under 100 characters.`,
+      },
+      {
+        role: "user",
+        content: `Hello George, please introduce yourself.`,
+      },
+    ];
+    setGptArray(initialMessage);
+  }, [author, title]);
 
   return (
     <>
@@ -39,13 +51,16 @@ export default function Dashboard() {
             setIntroCard={setIntroCard}
             setAuthor={setAuthor}
             setTitle={setTitle}
+            setGptArray={setGptArray}
+            gptArray={gptArray}
             author={author}
             title={title}
+            response={response}
           />
         )}
       </div>
       <div>
-        {!introCard && response.content && (
+        {!introCard && gptArray.length > 2 && (
           <ChatCard
             author={author}
             title={title}

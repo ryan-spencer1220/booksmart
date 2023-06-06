@@ -9,6 +9,8 @@ export default function IntroCard({
   setIntroCard,
   setAuthor,
   setTitle,
+  setGptArray,
+  gptArray,
   author,
   title,
   response,
@@ -17,15 +19,16 @@ export default function IntroCard({
   setIntroCard: React.Dispatch<React.SetStateAction<boolean>>;
   setAuthor: React.Dispatch<React.SetStateAction<string>>;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
-  setGptArray: React.Dispatch<React.SetStateAction<gptResponse>>;
+  setGptArray: React.Dispatch<React.SetStateAction<Array<gptResponse>>>;
+  gptArray: gptResponse[];
   author: string;
   title: string;
   response: object;
 }) {
-  const [userInput] = useState<object>({
-    author: "George Orwell",
-    title: "1984",
-  });
+  // const [userInput] = useState<object>({
+  //   author: "George Orwell",
+  //   title: "1984",
+  // });
 
   const submitAuthorPrompt = () => {
     fetch("http://localhost:3006/", {
@@ -33,19 +36,18 @@ export default function IntroCard({
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        author: "George Orwell",
-        title: "1984",
-      }),
+      body: JSON.stringify(gptArray),
     })
       .then((res) => res.json())
       .then((data) => {
-        setResponse({
-          role: "assistant",
-          content: `${data.completion.content}`,
-        });
-      })
-      .then(gptArray.push(response));
+        setGptArray([
+          ...gptArray,
+          {
+            role: "assistant",
+            content: `${data.completion.content}`,
+          },
+        ]);
+      });
   };
 
   const handleClick = () => {
