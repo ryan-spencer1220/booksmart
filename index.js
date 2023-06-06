@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post("/", async (req, res) => {
-  const { author, title } = req.body.userInput;
+  const { author, title } = req.body;
 
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",

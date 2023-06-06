@@ -19,11 +19,7 @@ export default function Dashboard() {
   });
   const [gptArray, setGptArray] = useState<Array<gptResponse>>([response]);
 
-  useEffect(() => {
-    if (response.role !== "") {
-      gptArray.push(response);
-    }
-  }, [response]);
+  useEffect(() => {}, [response]);
 
   return (
     <>

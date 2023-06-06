@@ -11,13 +11,16 @@ export default function IntroCard({
   setTitle,
   author,
   title,
+  response,
 }: {
   setResponse: React.Dispatch<React.SetStateAction<gptResponse>>;
   setIntroCard: React.Dispatch<React.SetStateAction<boolean>>;
   setAuthor: React.Dispatch<React.SetStateAction<string>>;
   setTitle: React.Dispatch<React.SetStateAction<string>>;
+  setGptArray: React.Dispatch<React.SetStateAction<gptResponse>>;
   author: string;
   title: string;
+  response: object;
 }) {
   const [userInput] = useState<object>({
     author: "George Orwell",
@@ -25,14 +28,14 @@ export default function IntroCard({
   });
 
   const submitAuthorPrompt = () => {
-    console.log("HIT FROM THE FRONT");
     fetch("http://localhost:3006/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userInput,
+        author: "George Orwell",
+        title: "1984",
       }),
     })
       .then((res) => res.json())
@@ -41,7 +44,8 @@ export default function IntroCard({
           role: "assistant",
           content: `${data.completion.content}`,
         });
-      });
+      })
+      .then(gptArray.push(response));
   };
 
   const handleClick = () => {
