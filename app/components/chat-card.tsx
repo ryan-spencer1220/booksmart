@@ -1,34 +1,40 @@
-"use client";
 import React, { useState, KeyboardEvent, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { gptResponse } from "./dashboard";
 
-export default function ChatCard(props: {
+export default function ChatCard({
+  author,
+  title,
+  response,
+  gptArray,
+  setGptArray,
+}: {
   author: string;
   title: string;
   response: gptResponse;
+  gptArray: Array<gptResponse>;
+  setGptArray: React.Dispatch<React.SetStateAction<Array<gptResponse>>>;
 }) {
   const [userInputArray, setUserInputArray] = useState<string[]>([]);
-  const [gptArray, setGptArray] = useState<gptResponse[]>([props.response]);
   const [userInput, setUserInput] = useState<string>("");
 
   const submitAuthorPrompt = () => {
-    console.log("HIT FROM THE FRONT");
-    fetch("http://localhost:3006/", {
+    fetch("http://localhost:3006/conversation", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userInput,
+        gptArray,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log("content: ", data.completion.content);
         setGptArray([
           ...gptArray,
           {
-            role: "user",
+            role: "assistant",
             content: `${data.completion.content}`,
           },
         ]);
@@ -39,13 +45,15 @@ export default function ChatCard(props: {
     if (e.code === "Enter") {
       setUserInputArray([...userInputArray, userInput]);
       setGptArray([...gptArray, { role: "user", content: userInput }]);
+      console.log("Second hit: ", gptArray);
+
+      submitAuthorPrompt();
       setUserInput("");
-      // submitAuthorPrompt();
     }
   };
 
   useEffect(() => {
-    console.log(gptArray);
+    console.log("USE EFFECT: ", gptArray);
   }, [gptArray]);
 
   return (
@@ -57,10 +65,10 @@ export default function ChatCard(props: {
       </div>
       <div className="flex items-end content-between h-full px-10 pt-10 text-xl relative overflow-hidden">
         <div className="px-6 py-10 absolute bottom-24 overflow-hidden">
-          <p className="text-white">{`>${props.author}`}</p>
+          <p className="text-white">{`>${author}`}</p>
           <p className="text-gold">
             <Typewriter
-              words={[props.response.content]}
+              words={[response.content]}
               cursor={false}
               cursorColor="white"
             />

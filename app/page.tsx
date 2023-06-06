@@ -1,11 +1,10 @@
-"use client";
 import Image from "next/image";
 import GreenButton from "./components/green-button";
+import { AiFillStar } from "react-icons/ai";
 import { FaLightbulb, FaBookOpen } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import Navbar from "./components/navbar";
-import Modal from "./components/modal";
-import { useState } from "react";
+import Footer from "./components/footer";
 
 // interface ModalProps {
 //   showModal: boolean;
@@ -13,16 +12,10 @@ import { useState } from "react";
 // }
 
 export default function Home() {
-  const [showModal, setShowModal] = useState<boolean>(false);
-
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
   return (
     <>
-      <main>
-        <Navbar setShowModal={setShowModal} />
+      <Navbar />
+      <main className="container mx-auto px-40 py-14">
         <section className="grid md:grid-cols-2 grid-cols-1 py-32 place-items-center">
           <div>
             <h1 className="text-8xl">Welcome to booksmart!</h1>
@@ -109,10 +102,67 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="py-24 text-center">
-          <h3 className="text-5xl pb-28">What our members are saying</h3>
+        <section className="pb-24 pt-12">
+          <h3 className="text-5xl pb-28 text-center">
+            What our members are saying
+          </h3>
           <div className="grid grid-cols-2 ">
-            <div></div>
+            <div className="grid grid-cols-1 gap-4">
+              <div className="bg-paleYellow rounded-2xl">
+                <div className="py-6 px-6">
+                  <div className="flex pb-4 gap-6">
+                    <div className="text-xl">Renee D.</div>
+                    <div className="flex self-center text-blue text-xl">
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                    </div>
+                  </div>
+                  Great app. Good selection of book summaries you can read or
+                  listen to while commuting. Instead of scrolling through your
+                  social media news feed, this is a much better way to spend
+                  your spare time in my opinion.
+                </div>
+              </div>
+              <div className="bg-paleYellow rounded-2xl">
+                <div className="py-6 px-6">
+                  <div className="flex pb-4 gap-6">
+                    <div className="text-xl">Sven O.</div>
+                    <div className="flex self-center text-blue text-xl">
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                    </div>
+                  </div>
+                  Life changing. The concept of being able to grasp a book's
+                  main point in such a short time truly opens multiple
+                  opportunities to grow every area of your life at a faster
+                  rate.
+                </div>
+              </div>
+              <div className="bg-paleYellow rounded-2xl">
+                <div className="py-6 px-6">
+                  <div className="flex pb-4 gap-6">
+                    <div className="text-xl">Jonathan A.</div>
+                    <div className="flex self-center text-blue text-xl">
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                      <AiFillStar />
+                    </div>
+                  </div>
+                  It's highly addictive to get core insights on personally
+                  relevant topics without repetition or triviality. Added to
+                  that the apps ability to suggest kindred interests opens up a
+                  foundation of knowledge.
+                </div>
+              </div>
+            </div>
             <Image
               src="/reading.svg"
               height={800}
@@ -123,7 +173,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <Modal isVisible={showModal} closeModal={closeModal} />
+      <Footer />
     </>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import IntroCard from "../components/intro-card";
 import ChatCard from "../components/chat-card";
 import { Typewriter } from "react-simple-typewriter";
@@ -17,6 +17,13 @@ export default function Dashboard() {
     role: "",
     content: "",
   });
+  const [gptArray, setGptArray] = useState<Array<gptResponse>>([response]);
+
+  useEffect(() => {
+    if (response.role !== "") {
+      gptArray.push(response);
+    }
+  }, [response]);
 
   return (
     <>
@@ -43,7 +50,13 @@ export default function Dashboard() {
       </div>
       <div>
         {!introCard && response.content && (
-          <ChatCard author={author} title={title} response={response} />
+          <ChatCard
+            author={author}
+            title={title}
+            response={response}
+            setGptArray={setGptArray}
+            gptArray={gptArray}
+          />
         )}
       </div>
     </>

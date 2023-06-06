@@ -24,8 +24,6 @@ export default function IntroCard({
     title: "1984",
   });
 
-  console.log(author, title);
-
   const submitAuthorPrompt = () => {
     console.log("HIT FROM THE FRONT");
     fetch("http://localhost:3006/", {

@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cera_pro.variable} font-sans`}>
-      <body className="container mx-auto px-40 py-14">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
