@@ -38,7 +38,7 @@ export default function Dashboard() {
       {!introCard && (
         <p className="text-7xl py-6 text-purple">
           <Typewriter
-            words={[`> ${author}`]}
+            words={[`> George Orwell`]}
             cursor={true}
             cursorColor="text-purple"
           />

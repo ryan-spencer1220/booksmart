@@ -1,5 +1,6 @@
 import React, { useState, KeyboardEvent, useEffect } from "react";
-import { Typewriter } from "react-simple-typewriter";
+import GptResponse from "./GptResponse";
+import UserResponse from "./UserResponse";
 import { gptResponse } from "./dashboard";
 
 export default function ChatCard({
@@ -18,6 +19,7 @@ export default function ChatCard({
   const [userInputArray, setUserInputArray] = useState<string[]>([]);
   const [userInput, setUserInput] = useState<string>("");
   const [newResponse, setNewResponse] = useState<string>("");
+  const [gptResponseArray, setGptResponseArray] = useState<string[]>([]);
 
   const submitAuthorPrompt = () => {
     fetch("http://localhost:3006/conversation", {
@@ -51,8 +53,8 @@ export default function ChatCard({
   };
 
   useEffect(() => {
-    console.log(gptArray);
-    setNewResponse(gptArray[gptArray.length - 1].content);
+    gptResponseArray.push(gptArray[gptArray.length - 1].content);
+    console.log(gptResponseArray);
   }, [gptArray]);
 
   return (
@@ -64,20 +66,10 @@ export default function ChatCard({
       </div>
       <div className="flex items-end content-between h-full px-10 pt-10 text-xl relative overflow-hidden">
         <div className="px-6 py-10 absolute bottom-24 overflow-hidden">
-          <p className="text-white">{`>${author}`}</p>
-          <p className="text-gold">
-            <Typewriter
-              words={[newResponse]}
-              cursor={false}
-              cursorColor="white"
-            />
-          </p>
-          {userInputArray.map((text, key) => (
-            <div className="pt-4" key={key}>
-              <p className="text-white">{`>You`}</p>
-              <p className="text-aqua">{text}</p>
-            </div>
-          ))}
+          {gptArray.length &&
+            gptArray
+              .slice(2)
+              .map((obj, key) => <GptResponse key={key} text={obj.content} />)}
         </div>
         <input
           type="text"
