@@ -19,7 +19,7 @@ export default function Home() {
         <section className="grid lg:grid-cols-2 grid-cols-1 py-32 place-items-center">
           <div className="lg:order-first order-last">
             <h1 className="text-8xl">Welcome to booksmart!</h1>
-            <p>
+            <p className="py-4 text-lg">
               This web application employs the Chat GPT API to provide a
               platform for users to converse with their favorite authors,
               creating a unique and immersive literary experience.
@@ -44,7 +44,7 @@ export default function Home() {
             Connect with your favorite authors like never before
           </h3>
           <div className="grid lg:grid-cols-3 gird-cols-1 gap-20 place-items-center py-20">
-            <div className=" bg-paleBlue rounded-xl">
+            <div className=" bg-paleBlue rounded-xl shadow-xl">
               <div className="p-10 grid grid-cols-1 place-items-center">
                 <div className="p-6 text-7xl text-blue">
                   <FaBookOpen />
@@ -56,7 +56,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="bg-paleBlue rounded-xl">
+            <div className="bg-paleBlue rounded-xl shadow-xl">
               <div className="p-10 grid grid-cols-1 place-items-center">
                 <div className="p-6 text-7xl text-blue">
                   <FaLightbulb />
@@ -68,7 +68,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className=" bg-paleBlue rounded-xl">
+            <div className=" bg-paleBlue rounded-xl shadow-xl">
               <div className="p-10 grid grid-cols-1 place-items-center">
                 <div className="p-6 text-7xl text-blue">
                   <BsFillPersonFill />
@@ -91,7 +91,7 @@ export default function Home() {
             <p className="py-2">Be happier</p>
             <p className="py-2">Be your best self!</p>
           </div>
-          <div className="bg-paleGreen text-2xl">
+          <div className="bg-paleGreen text-2xl rounded-sm shadow-xl">
             <div className="py-12 px-10">
               95% of Booksmart members read significantly more than before
             </div>
@@ -109,7 +109,7 @@ export default function Home() {
           </h3>
           <div className="grid md:grid-cols-2 grid-cols-1">
             <div className="grid grid-cols-1 gap-4">
-              <div className="bg-paleYellow rounded-2xl">
+              <div className="bg-paleYellow rounded-2xl shadow-lg">
                 <div className="py-6 px-6">
                   <div className="flex pb-4 gap-6">
                     <div className="text-xl">Renee D.</div>
@@ -127,7 +127,7 @@ export default function Home() {
                   your spare time in my opinion.
                 </div>
               </div>
-              <div className="bg-paleYellow rounded-2xl">
+              <div className="bg-paleYellow rounded-2xl shadow-lg">
                 <div className="py-6 px-6">
                   <div className="flex pb-4 gap-6">
                     <div className="text-xl">Sven O.</div>
@@ -145,7 +145,7 @@ export default function Home() {
                   rate.
                 </div>
               </div>
-              <div className="bg-paleYellow rounded-2xl">
+              <div className="bg-paleYellow rounded-2xl shadow-lg">
                 <div className="py-6 px-6">
                   <div className="flex pb-4 gap-6">
                     <div className="text-xl">Jonathan A.</div>
