@@ -3,7 +3,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 export default function Navbar() {
   return (
-    <ul className="text-4xl mx-auto px-40 py-14 flex md:justify-between justify-between">
+    <ul className="text-4xl mx-auto md:px-40 px-10 py-14 flex md:justify-between justify-between">
       <Link href="/">
         <li>booksmart</li>
       </Link>

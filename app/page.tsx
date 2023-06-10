@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="container mx-auto px-40 py-14">
+      <main className="container mx-auto md:px-40 px-20 py-14">
         <section className="grid md:grid-cols-2 grid-cols-1 py-32 place-items-center">
           <div>
             <h1 className="text-8xl">Welcome to booksmart!</h1>
@@ -28,7 +28,7 @@ export default function Home() {
               <GreenButton text="Check It Out!" link="/dashboard" />
             </div>
           </div>
-          <div className="place-self-end w-auto h-auto">
+          <div className="place-self-end w-auto h-auto lg:visible invisible">
             <Image
               src="/hero.png"
               width={400}
@@ -81,7 +81,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section className="grid grid-cols-2 py-24">
+        <section className="grid md:grid-cols-2 py-24 grid-cols-1 gap-10">
           <div className="text-4xl text-gray">
             <p className="py-2">Be more knowledgeable</p>
             <p className="py-2">Be more successful</p>
@@ -106,7 +106,7 @@ export default function Home() {
           <h3 className="text-5xl pb-28 text-center">
             What our members are saying
           </h3>
-          <div className="grid grid-cols-2 ">
+          <div className="grid md:grid-cols-2 grid-cols-1">
             <div className="grid grid-cols-1 gap-4">
               <div className="bg-paleYellow rounded-2xl">
                 <div className="py-6 px-6">

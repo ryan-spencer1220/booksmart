@@ -67,9 +67,13 @@ export default function ChatCard({
       <div className="flex items-end content-between h-full px-10 pt-10 text-xl relative overflow-hidden">
         <div className="px-6 py-10 absolute bottom-24 overflow-hidden">
           {gptArray.length &&
-            gptArray
-              .slice(2)
-              .map((obj, key) => <GptResponse key={key} text={obj.content} />)}
+            gptArray.slice(2).map((obj, key) => {
+              return key % 2 == 0 ? (
+                <GptResponse key={key} text={obj.content} />
+              ) : (
+                <UserResponse key={key} text={obj.content} />
+              );
+            })}
         </div>
         <input
           type="text"
