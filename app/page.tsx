@@ -15,11 +15,11 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="container mx-auto md:px-40 px-20 py-14">
-        <section className="grid md:grid-cols-2 grid-cols-1 py-32 place-items-center">
-          <div>
+      <main className="container mx-auto xl:px-40 px-20">
+        <section className="grid lg:grid-cols-2 grid-cols-1 py-32 place-items-center">
+          <div className="lg:order-first order-last">
             <h1 className="text-8xl">Welcome to booksmart!</h1>
-            <p className="">
+            <p>
               This web application employs the Chat GPT API to provide a
               platform for users to converse with their favorite authors,
               creating a unique and immersive literary experience.
@@ -28,12 +28,13 @@ export default function Home() {
               <GreenButton text="Check It Out!" link="/dashboard" />
             </div>
           </div>
-          <div className="place-self-end w-auto h-auto lg:visible invisible">
+          <div className="place-self-end w-auto h-auto">
             <Image
               src="/hero.png"
               width={400}
               height={400}
               alt="hero image"
+              className="pb-20"
               priority
             />
           </div>
