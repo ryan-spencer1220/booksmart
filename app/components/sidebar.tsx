@@ -16,15 +16,15 @@ const Sidebar = ({
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Top 100")}
+          onClick={() => setGenre("Thriller")}
         >
-          Top 100
+          Thriller
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Nonfiction")}
+          onClick={() => setGenre("Self_Help")}
         >
-          Nonfiction
+          Self Help
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
@@ -34,15 +34,15 @@ const Sidebar = ({
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Science Fiction")}
+          onClick={() => setGenre("science_fiction")}
         >
           Science Fiction
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Biography")}
+          onClick={() => setGenre("entrepreneurship")}
         >
-          Biography
+          Entrepreneurship
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
