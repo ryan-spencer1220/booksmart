@@ -22,31 +22,31 @@ const Sidebar = ({
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Favorites")}
+          onClick={() => setGenre("Nonfiction")}
         >
           Nonfiction
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Favorites")}
+          onClick={() => setGenre("Classics")}
         >
           Classics
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Favorites")}
+          onClick={() => setGenre("Science Fiction")}
         >
           Science Fiction
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Favorites")}
+          onClick={() => setGenre("Biography")}
         >
           Biography
         </li>
         <li
           className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Favorites")}
+          onClick={() => setGenre("Horror")}
         >
           Horror
         </li>
