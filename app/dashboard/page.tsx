@@ -1,9 +1,7 @@
 "use client";
-import Dashboard from "../components/dashboard";
 import Sidebar from "../components/sidebar";
 import BookDisplay from "../components/BookDisplay";
 import { useState, useEffect } from "react";
-import IntroCard from "../components/intro-card";
 import ChatCard from "../components/chat-card";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -14,14 +12,25 @@ export interface gptResponse {
 
 export default function page() {
   const [genre, setGenre] = useState<string>("Self_Help");
-  const [introCard, setIntroCard] = useState<boolean>(true);
   const [author, setAuthor] = useState<string>("");
   const [title, setTitle] = useState<string>("");
   const [response, setResponse] = useState<gptResponse>({
     role: "",
     content: "",
   });
-  const [gptArray, setGptArray] = useState<Array<gptResponse>>([]);
+
+  let initialMessage = [
+    {
+      role: "system",
+      content: `You are the famous author, Anthony Bourdain, author of Kitchen Confidential. Please keep responses under 200 characters.`,
+    },
+    {
+      role: "user",
+      content: `Hello, Anthony please introduce yourself.`,
+    },
+  ];
+
+  const [gptArray, setGptArray] = useState<Array<gptResponse>>(initialMessage);
 
   const submitAuthorPrompt = () => {
     fetch("http://localhost:3006/", {
@@ -43,24 +52,15 @@ export default function page() {
       });
   };
 
-  const handleClick = () => {
-    setIntroCard(false);
-    submitAuthorPrompt();
-  };
+  // useEffect(() => {
+  //   setGptArray(initialMessage);
+  // }, [author, title]);
 
   useEffect(() => {
-    let initialMessage = [
-      {
-        role: "system",
-        content: `You are the famous author, George Orwell, author of Animal Farm. Please keep responses under 100 characters.`,
-      },
-      {
-        role: "user",
-        content: `Hello George, please introduce yourself.`,
-      },
-    ];
-    setGptArray(initialMessage);
-  }, [author, title]);
+    {
+      author.length > 1 && submitAuthorPrompt();
+    }
+  }, [author]);
 
   return (
     <div className="flex">
@@ -77,7 +77,15 @@ export default function page() {
             setTitle={setTitle}
           />
         )}
-        {author && <Dashboard />}
+        {author && (
+          <ChatCard
+            author={author}
+            title={title}
+            response={response}
+            setGptArray={setGptArray}
+            gptArray={gptArray}
+          />
+        )}
       </div>
     </div>
   );

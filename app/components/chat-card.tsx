@@ -58,7 +58,7 @@ export default function ChatCard({
   }, [gptArray]);
 
   return (
-    <section className="max-w-full shadow-2xl rounded-3xl bg-gray aspect-video overflow-hidden">
+    <section className="max-w-full shadow-2xl rounded-3xl bg-gray aspect-video overflow-hidden mx-36 my-12">
       <div className="h-10 w-full bg-lightGray rounded-t-3xl flex items-center space-x-1 ps-2 overflow-hidden">
         <div className="rounded-full bg-red w-5 h-5"></div>
         <div className="rounded-full bg-yellow w-5 h-5"></div>

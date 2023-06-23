@@ -9,10 +9,14 @@ export interface gptResponse {
   content: string;
 }
 
-export default function Dashboard() {
+export default function Dashboard({
+  author,
+  title,
+}: {
+  author: string;
+  title: string;
+}) {
   const [introCard, setIntroCard] = useState<boolean>(true);
-  const [author, setAuthor] = useState<string>("");
-  const [title, setTitle] = useState<string>("");
   const [response, setResponse] = useState<gptResponse>({
     role: "",
     content: "",
@@ -27,11 +31,33 @@ export default function Dashboard() {
       },
       {
         role: "user",
-        content: `Hello George, please introduce yourself.`,
+        content: `Hello, please introduce yourself.`,
       },
     ];
     setGptArray(initialMessage);
+    submitAuthorPrompt();
   }, [author, title]);
+
+  const submitAuthorPrompt = () => {
+    console.log(gptArray);
+    fetch("http://localhost:3006/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(gptArray),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setGptArray([
+          ...gptArray,
+          {
+            role: "assistant",
+            content: `${data.completion.content}`,
+          },
+        ]);
+      });
+  };
 
   return (
     <>
@@ -45,7 +71,7 @@ export default function Dashboard() {
         </p>
       )}
       <div>
-        {introCard && (
+        {/* {introCard && (
           <IntroCard
             setResponse={setResponse}
             setIntroCard={setIntroCard}
@@ -57,10 +83,11 @@ export default function Dashboard() {
             title={title}
             response={response}
           />
-        )}
+        )} */}
       </div>
       <div>
-        {!introCard && gptArray.length > 2 && (
+        {/* {!introCard && gptArray.length > 2 && ( */}
+        {gptArray.length > 2 && (
           <ChatCard
             author={author}
             title={title}
@@ -69,6 +96,7 @@ export default function Dashboard() {
             gptArray={gptArray}
           />
         )}
+        {/* )} */}
       </div>
     </>
   );

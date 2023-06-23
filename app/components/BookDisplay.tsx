@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 
 const BookDisplay = ({
   genre,
@@ -13,12 +12,10 @@ const BookDisplay = ({
   const [bookArray, setBookArray] = useState<any[]>([]);
 
   const callBooksAPI = async () => {
-    console.log(genre);
     const response = await fetch(
       `https://www.googleapis.com/books/v1/volumes?g=phpmax-results=40&q=subject:${genre}`
     );
     const json = await response.json();
-    console.log(json);
     setBookArray(json.items);
   };
 
@@ -30,7 +27,6 @@ const BookDisplay = ({
     <div className="grid grid-cols-6 px-10">
       {bookArray &&
         bookArray.map((book, key) => {
-          console.log(book);
           return (
             <div key={key} className="p-6">
               <img
