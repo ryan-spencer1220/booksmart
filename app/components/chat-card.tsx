@@ -69,7 +69,7 @@ export default function ChatCard({
           {gptArray.length &&
             gptArray.slice(2).map((obj, key) => {
               return key % 2 == 0 ? (
-                <GptResponse key={key} text={obj.content} />
+                <GptResponse key={key} text={obj.content} author={author} />
               ) : (
                 <UserResponse key={key} text={obj.content} />
               );

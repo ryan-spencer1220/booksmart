@@ -87,15 +87,7 @@ export default function Dashboard({
       </div>
       <div>
         {/* {!introCard && gptArray.length > 2 && ( */}
-        {gptArray.length > 2 && (
-          <ChatCard
-            author={author}
-            title={title}
-            response={response}
-            setGptArray={setGptArray}
-            gptArray={gptArray}
-          />
-        )}
+
         {/* )} */}
       </div>
     </>
