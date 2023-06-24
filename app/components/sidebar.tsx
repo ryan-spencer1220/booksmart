@@ -7,6 +7,9 @@ const Sidebar = ({
 }) => {
   return (
     <div className="h-screen w-80 bg-gray">
+      <div className="text-4xl text-white">
+        <p>Booksmart</p>
+      </div>
       <ul className="text-4xl text-white ">
         <li
           className="ps-4 py-8 hover:cursor-pointer"

@@ -18,21 +18,24 @@ export default function page() {
     role: "",
     content: "",
   });
+  const [gptArray, setGptArray] = useState<Array<gptResponse>>([]);
 
   let initialMessage = [
     {
       role: "system",
-      content: `You are the famous author, Anthony Bourdain, author of Kitchen Confidential. Please keep responses under 200 characters.`,
+      content: `You are the famous author, ${author}, author of ${title}. Please keep responses under 200 characters.`,
     },
     {
       role: "user",
-      content: `Hello, Anthony please introduce yourself.`,
+      content: `Hello, ${author} please introduce yourself.`,
     },
   ];
 
-  const [gptArray, setGptArray] = useState<Array<gptResponse>>(initialMessage);
-
   const submitAuthorPrompt = () => {
+    gptArray.push(...initialMessage);
+    console.log("Author: ", author, "Title: ", title);
+    console.log(initialMessage);
+
     fetch("http://localhost:3006/", {
       method: "POST",
       headers: {
@@ -52,14 +55,8 @@ export default function page() {
       });
   };
 
-  // useEffect(() => {
-  //   setGptArray(initialMessage);
-  // }, [author, title]);
-
   useEffect(() => {
-    {
-      author.length > 1 && submitAuthorPrompt();
-    }
+    submitAuthorPrompt();
   }, [author]);
 
   return (
