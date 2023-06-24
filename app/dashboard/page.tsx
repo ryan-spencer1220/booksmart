@@ -33,8 +33,6 @@ export default function page() {
 
   const submitAuthorPrompt = () => {
     gptArray.push(...initialMessage);
-    console.log("Author: ", author, "Title: ", title);
-    console.log(initialMessage);
 
     fetch("http://localhost:3006/", {
       method: "POST",
@@ -62,7 +60,7 @@ export default function page() {
   return (
     <div className="flex">
       <div className="flex-none">
-        <Sidebar setGenre={setGenre} />
+        <Sidebar genre={genre} setAuthor={setAuthor} setGenre={setGenre} />
       </div>
       <div className="grow justify-start items-start py-20">
         <p className="text-4xl text-gray ps-10">{author ? author : genre}</p>

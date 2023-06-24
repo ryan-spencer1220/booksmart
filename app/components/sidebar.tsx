@@ -1,61 +1,47 @@
-import React from "react";
+import { useState } from "react";
 
-const Sidebar = ({
+export default function Sidebar({
+  genre,
+  setAuthor,
   setGenre,
 }: {
+  genre: string;
   setGenre: React.Dispatch<React.SetStateAction<string>>;
-}) => {
+  setAuthor: React.Dispatch<React.SetStateAction<string>>;
+}) {
+  const [selected, setSelected] = useState<boolean>(false);
+  const genres = [
+    "Favorites",
+    "Thriller",
+    "Self_Help",
+    "Classics",
+    "Science_Fiction",
+    "Entrepreneurship",
+    "Horror",
+  ];
+
   return (
-    <div className="h-screen w-80 bg-gray">
-      <div className="text-4xl text-white">
+    <div className="h-screen w-80 bg-black">
+      <div className="text-4xl text-white p-6">
         <p>Booksmart</p>
       </div>
-      <ul className="text-4xl text-white ">
-        <li
-          className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Favorites")}
-        >
-          Favorites
-        </li>
-        <li
-          className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Thriller")}
-        >
-          Thriller
-        </li>
-        <li
-          className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Self_Help")}
-        >
-          Self Help
-        </li>
-        <li
-          className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Classics")}
-        >
-          Classics
-        </li>
-        <li
-          className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("science_fiction")}
-        >
-          Science Fiction
-        </li>
-        <li
-          className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("entrepreneurship")}
-        >
-          Entrepreneurship
-        </li>
-        <li
-          className="ps-4 py-8 hover:cursor-pointer"
-          onClick={() => setGenre("Horror")}
-        >
-          Horror
-        </li>
+      <ul className="text-2xl text-white ">
+        {genres.map((selectedGenre, key) => (
+          <li
+            key={key}
+            className={`${
+              genre == selectedGenre && `text-lightGreen`
+            } ps-8 py-8 hover:cursor-pointer`}
+            onClick={() => {
+              setSelected(true);
+              setGenre(selectedGenre);
+              setAuthor("");
+            }}
+          >
+            {selectedGenre}
+          </li>
+        ))}
       </ul>
     </div>
   );
-};
-
-export default Sidebar;
+}

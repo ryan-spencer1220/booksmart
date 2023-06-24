@@ -54,7 +54,7 @@ export default function ChatCard({
 
   useEffect(() => {
     gptResponseArray.push(gptArray[gptArray.length - 1].content);
-    console.log(gptResponseArray);
+    console.log(gptArray);
   }, [gptArray]);
 
   return (
